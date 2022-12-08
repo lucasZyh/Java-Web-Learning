@@ -1,5 +1,6 @@
 package com.itheima.pojo;
 
+@SuppressWarnings("all")
 public class User {
     private Integer id;
     private String username;
