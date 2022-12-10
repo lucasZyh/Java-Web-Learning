@@ -135,4 +135,140 @@ public class MyBatisTest {
         //5. 释放资源
         sqlSession.close();
     }
+
+
+    @Test
+    public void testAdd() throws IOException{
+        //接收参数
+        int status = 1;
+        String companyName = "波导手机";
+        String brandName = "波导";
+        String description = "手机中的战斗机";
+        int ordered = 100;
+
+
+        //封装对象(方法2)
+        Brand1 brand = new Brand1();
+        brand.setStatus(status);
+        brand.setCompanyName(companyName);
+        brand.setBrandName(brandName);
+        brand.setDescription(description);
+        brand.setOrdered(ordered);
+
+        //1. 获取SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        //2. 获取SqlSession对象
+        //SqlSession sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);//自动提交事务
+
+        //3. 获取Mapper接口的代理对象
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+
+        //4. 执行方法
+        mapper.add(brand);
+        System.out.println(brand.getId());
+        //提交事务
+        //sqlSession.commit();
+
+        //5. 释放资源
+        sqlSession.close();
+    }
+
+
+
+
+    @Test
+    public void testUpdate() throws IOException{
+        //接收参数
+        int status = 1;
+//        String companyName = "波导手机";
+//        String brandName = "波导";
+//        String description = "波导手机,手机中的战斗机";
+//        int ordered = 200;
+        int id = 7;
+
+
+        //封装对象(方法2)
+        Brand1 brand = new Brand1();
+        brand.setStatus(status);
+//        brand.setCompanyName(companyName);
+//        brand.setBrandName(brandName);
+//        brand.setDescription(description);
+//        brand.setOrdered(ordered);
+        brand.setId(id);
+
+        //1. 获取SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        //2. 获取SqlSession对象
+        //SqlSession sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);//自动提交事务
+
+        //3. 获取Mapper接口的代理对象
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+
+        //4. 执行方法
+        int count = mapper.update(brand);
+        System.out.println(count);
+
+        //5. 释放资源
+        sqlSession.close();
+    }
+
+
+
+    @Test
+    public void testDeleteById() throws IOException{
+        //接收参数
+        int id = 7;
+
+        //1. 获取SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        //2. 获取SqlSession对象
+        //SqlSession sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);//自动提交事务
+
+        //3. 获取Mapper接口的代理对象
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+
+        //4. 执行方法
+        mapper.deleteById(id);
+
+        //5. 释放资源
+        sqlSession.close();
+    }
+
+
+
+    @Test
+    public void testDeleteByIds() throws IOException{
+        //接收参数
+        int[] ids = {8,9};
+
+        //1. 获取SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        //2. 获取SqlSession对象
+        //SqlSession sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);//自动提交事务
+
+        //3. 获取Mapper接口的代理对象
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+
+        //4. 执行方法
+        mapper.deleteByIds(ids);
+
+        //5. 释放资源
+        sqlSession.close();
+    }
 }

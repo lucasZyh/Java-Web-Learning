@@ -36,5 +36,26 @@ public interface BrandMapper {
      */
     List<Brand1> selectByConditionSingle(Brand1 brand);
 
+    /**
+     * 添加
+     */
+    void add(Brand1 brand);
 
+
+    /**
+     * 修改
+     */
+    int update(Brand1 brand);
+
+
+    /**
+     * 根据id删除
+     */
+    void deleteById(int id);
+
+
+    /**
+     * 批量删除
+     */
+    void deleteByIds(int[] ids);
 }
