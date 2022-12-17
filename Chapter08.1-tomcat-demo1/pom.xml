@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>tomcat-demo1</artifactId>
+    <artifactId>Chapter08.1-tomcat-demo1</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 </project>
