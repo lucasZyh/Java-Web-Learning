@@ -1,4 +1,4 @@
-package com.itheima.web;
+package com.itheima.web.servlet;
 
 import com.itheima.pojo.Brand;
 import com.itheima.service.BrandService;
@@ -8,17 +8,20 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet("/deleteByIdServlet")
-public class DeleteByIdServlet extends HttpServlet {
+@WebServlet("/selectByIdServlet")
+public class SelectByIdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BrandService brandService = new BrandService();
         //1. 接收id
         String id = request.getParameter("id");
-        //2. 调用service删除
-        brandService.deleteById(Integer.parseInt(id));
-        //3. 转发到查询所有Servlet
-        request.getRequestDispatcher("/selectAllServlet").forward(request,response);
+        //2. 调用service查询
+        Brand brand = brandService.selectById(Integer.parseInt(id));
+        //3. 存储到request中
+        request.setAttribute("brand",brand);
+
+        //4. 转发到update.jsp
+        request.getRequestDispatcher("/update.jsp").forward(request,response);
     }
 
     @Override

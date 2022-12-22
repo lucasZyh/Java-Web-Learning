@@ -1,4 +1,4 @@
-package com.itheima.web;
+package com.itheima.web.servlet;
 
 import com.itheima.util.CheckCodeUtil;
 

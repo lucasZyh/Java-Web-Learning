@@ -1,4 +1,4 @@
-package com.itheima.web;
+package com.itheima.web.servlet;
 
 import com.itheima.pojo.User;
 import com.itheima.service.UserService;
